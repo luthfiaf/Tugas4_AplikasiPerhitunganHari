@@ -1,5 +1,7 @@
 
+import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.temporal.ChronoUnit;
 import javax.swing.JOptionPane;
 
 /*
@@ -12,6 +14,13 @@ import javax.swing.JOptionPane;
  * @author ASUS
  */
 public class PerhitunganHariView extends javax.swing.JFrame {
+    
+    // Array tanggal penting
+private final String[] tanggalPenting = {
+    "2023-12-25: Natal",
+    "2023-10-31: Halloween",
+    // Tambahkan tanggal penting lainnya sesuai kebutuhan
+};
 
     /**
      * Creates new form PerhitunganHariView
@@ -52,10 +61,13 @@ public class PerhitunganHariView extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("APLIKASI PERHITUNGAN HARI");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Tahun");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Bulan");
 
+        labelHasil.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         labelHasil.setText("Hasil");
 
         btnHitung.setText("Hitung");
@@ -106,28 +118,34 @@ public class PerhitunganHariView extends javax.swing.JFrame {
                         .addGap(226, 226, 226)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(labelHasil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(44, 44, 44)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(comboBulan, 0, 258, Short.MAX_VALUE)
-                                    .addComponent(spinnerTahun)))
-                            .addComponent(jCalendar, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addComponent(btnHitung)
-                                .addGap(52, 52, 52)
-                                .addComponent(btnHapus)
-                                .addGap(28, 28, 28)
-                                .addComponent(btnKeluar)))
-                        .addGap(18, 18, 18)
-                        .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(67, 67, 67)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(comboBulan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(spinnerTahun, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(58, 58, 58)
+                                        .addComponent(btnHitung)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(btnHapus)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(btnKeluar)))
+                                .addGap(39, 39, 39))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelHasil, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +154,7 @@ public class PerhitunganHariView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
+                        .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(spinnerTahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -144,19 +162,19 @@ public class PerhitunganHariView extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(comboBulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addComponent(labelHasil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(55, 55, 55)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnHitung)
                             .addComponent(btnHapus)
                             .addComponent(btnKeluar))
-                        .addGap(39, 39, 39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelHasil)
+                        .addGap(5, 5, 5)
+                        .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,11 +190,7 @@ public class PerhitunganHariView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private final String[] tanggalPenting = {
-    "2023-12-25: Natal",
-    "2023-10-31: Halloween",
-    // Tambahkan tanggal penting lainnya sesuai kebutuhan
-};
+
     private void comboBulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBulanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBulanActionPerformed
@@ -197,10 +211,10 @@ private final String[] tanggalPenting = {
     
     // Memeriksa tahun kabisat
     boolean isLeapYear = yearMonth.isLeapYear();
-    String kabisatMessage = isLeapYear ? "Tahun kabisat" : "Bukan tahun kabisat";
+    String kabisatMessage = isLeapYear ? "Tahun kabisat" : "Bukan tahun kabisat\n";
     
     // Menambahkan hasil tahun kabisat ke JTextArea
-    jTextArea1.append("Tahun ini adalah " + kabisatMessage);
+    jTextArea1.append("Tahun ini adalah " + kabisatMessage + "\n");
     
     // Bagian berikut ini yang terkait dengan labelHasil sudah dikomentari
     /*
@@ -214,6 +228,33 @@ private final String[] tanggalPenting = {
     // Menambahkan hasil tahun kabisat ke label hasil
     labelHasil.setText(labelHasil.getText() + "Tahun ini adalah " + kabisatMessage);
     */
+    // Mendapatkan hari pertama dan hari terakhir
+    LocalDate hariPertama = yearMonth.atDay(1);  // Hari pertama bulan tersebut
+    LocalDate hariTerakhir = yearMonth.atEndOfMonth(); // Hari terakhir bulan tersebut
+    
+    // Menambahkan informasi hari pertama dan hari terakhir ke JTextArea
+    jTextArea1.append("Hari pertama: " + hariPertama.getDayOfWeek() + ", " + hariPertama + "\n");
+    jTextArea1.append("Hari terakhir: " + hariTerakhir.getDayOfWeek() + ", " + hariTerakhir + "\n");
+    
+    // Menghitung selisih hari antara hari pertama dan hari terakhir
+    long selisihHari = ChronoUnit.DAYS.between(hariPertama, hariTerakhir);
+    
+    // Menampilkan selisih hari di JTextArea
+    jTextArea1.append("Selisih hari antara hari pertama dan hari terakhir: " + selisihHari + " hari\n");
+    
+    // Menampilkan tanggal penting jika ada
+    String tanggalPentingMessage = "Tanggal penting bulan ini:\n";
+    for (String tanggal : tanggalPenting) {
+        String[] split = tanggal.split(":");
+        String tanggalStr = split[0];
+        String namaHari = split[1];
+
+        if (tanggalStr.startsWith(String.format("%04d-%02d", tahun, bulan))) {
+            tanggalPentingMessage += tanggal + "\n";
+        }
+    }
+    jTextArea1.append(tanggalPentingMessage);
+    
         
     }//GEN-LAST:event_btnHitungActionPerformed
 
